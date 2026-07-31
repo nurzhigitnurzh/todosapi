@@ -19,5 +19,23 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         emit(ErrorPostState());
       }
     });
+    on<CreatePostEvent>((event, emit) async {
+      try {
+        emit(LoadingPostState());
+        final response = await repository.createPost(event.postModel);
+        emit(SuccessCreateState(postModel: response));
+      } catch (e) {
+        emit(ErrorPostState());
+      }
+    });
+    on<GetPostByIdEvent>((event, emit) async {
+      try {
+        emit(LoadingPostState());
+        final post = await repository.getPostById(event.id);
+        emit(LoadedPostDetailState(postModel: post));
+      } catch (e) {
+        emit(ErrorPostState());
+      }
+    });
   }
 }

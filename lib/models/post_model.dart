@@ -1,6 +1,6 @@
 class PostModel {
   PostModel({
-    required this.id,
+    this.id =0,
     required this.todo,
     required this.completed, 
     required this.userId,});
@@ -17,5 +17,13 @@ class PostModel {
     
     );
   }
+  Map<String,dynamic> toJson(){
+    return{
+      
+      'todo': todo,
+      'completed': completed,
+      'userId': userId,
+    };
 }
 
+}

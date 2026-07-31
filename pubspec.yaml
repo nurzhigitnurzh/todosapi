@@ -30,6 +30,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.8
+  dio: ^5.9.2
+  talker_flutter: ^4.7.6
+  talker_bloc_logger: ^4.7.6
+  talker_dio_logger: ^4.7.6
+  toastification: ^3.2.0
   
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,13 +46,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_bloc: ^9.1.1
-  equatable: ^2.0.8
-  dio: ^5.9.2
-  talker_flutter: ^4.7.6
-  talker_bloc_logger: ^4.7.6
-  talker_dio_logger: ^4.7.6
-
+  
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

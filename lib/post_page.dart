@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lesson6todo/create_post_page.dart';
 import 'package:lesson6todo/post/bloc/post_bloc.dart';
+import 'package:lesson6todo/post_detail_page.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -22,6 +23,12 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostPage()));
+        },
+      ),
       body: Center(
         child: BlocBuilder<PostBloc, PostState>(
           bloc: _postBloc,
@@ -32,6 +39,14 @@ class _PostPageState extends State<PostPage> {
                 itemCount: state.postlist.length,
                 itemBuilder: (context, index) {
                   return ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PostDetailPage(id: state.postlist[index].id),
+                        ),
+                      );
+                    },
                     title: Text('${state.postlist[index].todo}'));
                 },
               );
